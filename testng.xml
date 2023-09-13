@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+
+    <parameter name="browser" value="chrome"></parameter>
+
+    <test name="Add To Cart Scenario" preserve-order="true" enabled="false">
+        <classes>
+            <class name="">
+                <methods>
+                    <include name="login_Successfully"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+</suite>

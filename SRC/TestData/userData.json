@@ -1,6 +1,13 @@
-[
+
   {
     "phoneNumber": "01001433239",
-    "password": "123456Aa"
+    "password": "123456Aa",
+    "addressFullName" : "ragab",
+    "addressMobileNumber": "01001433239",
+    "addNewAddressStreetName" : "Abou Bakr el sedeeek",
+    "addNewAddressBuildingNumber" : "12",
+    "addNewAddressCity": "Cairo",
+    "addNewAddressDistrict" : "Zamalek",
+    "addNewAddressLandmark": "cfc",
+    "itemPrice" : "15000"
   }
-]

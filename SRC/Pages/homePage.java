@@ -6,44 +6,49 @@
 package SRC.Pages;
 
 import SRC.Pages.basePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 
 
 public class homePage extends basePage {
 
     @FindBy(
             css = "a[id='nav-link-accountList']"
-    ) //a[id='nav-link-accountList']
+    )
     WebElement menuItm;
     @FindBy(
             css = "#id=nav-flyout-ya-signin"
-    ) //a[id='nav-link-accountList']
+    )
     WebElement signInBtn;
 
     @FindBy(
-            id = "nav-hamburger-menu"
+            css = "a[id='nav-hamburger-menu']"
     )
     WebElement AllMenuBtn;
 
     @FindBy(
-            css = "a[data-menu-id='16']"
+            linkText = "Video Games"
     )
     WebElement videGamesSection;
 
     @FindBy(
-            css = "a[class='hmenu-item hmenu-compressed-btn']"
+            css = "a[class*='hmenu-compressed-btn']"
     )
-
-    WebElement seeAllBtn;
+    List<WebElement> seeAllBtn;
 
     @FindBy(
-            linkText = "All Video Games"
+            css = "#hmenu-content > ul.hmenu.hmenu-visible.hmenu-translateX > li:nth-child(3) > a"
     )
-
     WebElement AllVideoGamesBtn;
+
+    @FindBy(
+            css = "ul[data-menu-id=\"16\"]\n"
+    )
+    WebElement AllVideoGamesList;
 
 
     public homePage(WebDriver driver) {
@@ -59,14 +64,6 @@ public class homePage extends basePage {
             System.out.println("* Failed to  click on MenuItm list");
         }
     }
-    public void clickOn_SignInBtn() throws InterruptedException {
-        if (this.signInBtn.isDisplayed()) {
-            clickButton(this.signInBtn);
-            System.out.println("* Clicked on signInBtn list");
-        } else {
-            System.out.println("* Failed to  click on signInBtn list");
-        }
-    }
 
     public void openMenuList() throws InterruptedException {
         if (this.AllMenuBtn.isDisplayed()) {
@@ -79,34 +76,46 @@ public class homePage extends basePage {
     }
 
     public void clickOnSeeAllBtn() throws InterruptedException {
-        if (this.seeAllBtn.isDisplayed()) {
-            clickButton(this.seeAllBtn);
+        scrollDown(500);
+        if (!this.seeAllBtn.isEmpty()) {
+            for (WebElement seeAllBtn : this.seeAllBtn){
+                clickButton(seeAllBtn);
+                WebElement compressedMenu =  seeAllBtn.findElement(By.xpath("..")).
+                        findElement(By.xpath("preceding-sibling::*[1]"));
+
+                WebElement targetCategory = compressedMenu.findElement(By.linkText("Video Games"));
+                if (targetCategory.isDisplayed()){
+                    clickButton(targetCategory);
+                    break;
+                }
+
+            }
             System.out.println("* Clicked on see All btn in list");
         } else {
-            System.out.println("* Failed to  click on on see All btn in lis");
+            System.out.println("* Failed to  click on on see All btn in list");
         }
-
     }
 
     public void chooseVideoGameSection() throws InterruptedException {
+        scrollDown(300);
         if (this.videGamesSection.isDisplayed()) {
             clickButton(this.videGamesSection);
             System.out.println("* Clicked on videGame Tab btn in list");
         } else {
-            System.out.println("* Failed to  click on videGame Tab bt in lis");
+            System.out.println("* Failed to  click on videoGame Tab bt in lis");
         }
-
     }
 
     public void chooseAllVideoGames() throws InterruptedException {
+
         if (this.AllVideoGamesBtn.isDisplayed()) {
-            clickButton(this.AllVideoGamesBtn);
+            List<WebElement> VideoElements = driver.findElements(By.cssSelector("#hmenu-content > ul.hmenu.hmenu-visible.hmenu-translateX > li:nth-child(3) > a"));
+            clickButton(VideoElements.get(1));
             System.out.println("* Clicked on All video Games");
         } else {
             System.out.println("* Failed to  click on All video Games");
         }
 
+
     }
-
-
 }

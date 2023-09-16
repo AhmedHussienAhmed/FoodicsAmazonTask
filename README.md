@@ -36,6 +36,10 @@ Provides the address details and selects cash as the payment method.
 Verifies that the total amount of all items is correct, including shipping fees if applicable.
 
 
+please remove any pre-added address to be a valid scenario
+COD btn is always dimmed
+
+
 Notes
 Ensure that your internet connection is stable during the automation process.
 The script may require adjustments if Amazon's website structure changes in the future.

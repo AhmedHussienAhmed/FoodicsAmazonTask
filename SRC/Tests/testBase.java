@@ -49,7 +49,7 @@ public class testBase {
 
     @AfterTest
     public void stopDriver() throws InterruptedException {
-        Thread.sleep(8000L);
+        Thread.sleep(4000L);
         driver.close();
     }
 

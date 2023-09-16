@@ -57,7 +57,6 @@ public class userLoginThenAddVideoGamesItemToCart extends SRC.Tests.testBase {
         videoGamesPageObject.addItemToBasket(desiredItem);
         videoGamesPageObject.clickOn_ProceedToBuy();
         boolean itemCorrect =  videoGamesPageObject.compareItemsInBasket(desiredItem);
-        // Make an assertion here
         videoGamesPageObject.addNewAddressFullName(jsonReaderObject.fullName);
         videoGamesPageObject.addNewAddressMobileNumber(jsonReaderObject.mobileNumber);
         videoGamesPageObject.addNewAddressStreetName(jsonReaderObject.streetName);
